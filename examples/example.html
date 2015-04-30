@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<script src="../d3.min.js" charset="utf-8"></script>
+		<script src="../graphicalgs.js" charset="utf-8"></script>
+		<script>
+			function sdraw(data, color, h=0, hl=[], hlc=[]){
+				var dur = parseInt(document.getElementById("dur").value);
+				console.log("page", dur);
+				var opt = {horizontal: h, animDuration: dur, highlight: hl, hlcolors: hlc};
+				drawArray('.chart', data, color, opt);
+			}
+		</script>
+		<style>
+			body, html {margin: 0; padding: 0; }
+			.chart {height: 90%; margin: 0; padding: 0; border: 1px solid black; width: 99%;}
+		</style>
+	</head>
+	<body onload="drawArray('.chart', [1, 2, 3, 4, 5], 'steelblue', swap=[1, 2]);">
+		<button type="button" onclick="sdraw([1, 2, 3, 4, 5, 6], 'steelblue');">1 2 3 4 5 6</button>
+		<button type="button" onclick="sdraw([6, 5, 4, 3, 2, 1], 'steelblue');">6 5 4 3 2 1</button>
+		<button type="button" onclick="sdraw([5, 4, 3, 2, 1], 'steelblue');">5 4 3 2 1</button>
+		<button type="button" onclick="sdraw([1, 2, 3, 4, 5, 6], 'steelblue', 1);">1 2 3 4 5 6 (h)</button>
+		<button type="button" onclick="sdraw([6, 5, 4, 3, 2, 1], 'steelblue', 1);">6 5 4 3 2 1 (h)</button>
+		<button type="button" onclick="sdraw([5, 4, 3, 2, 1], 'steelblue', 1, hl=[1, 3], hlc=['red']);">5 4 3 2 1 (h)</button>
+		<input id="dur" type="number">
+		<svg class="chart">
+			
+		</svg>
+	</body>
+</html>
